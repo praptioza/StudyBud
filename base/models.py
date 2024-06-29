@@ -17,7 +17,9 @@ class Room(models.Model):
     updated = models.DateTimeField(auto_now=True) # so whenever the save method is called, take a snapshot / timestamp and store it in the database column 'updated'
     created = models.DateTimeField(auto_now_add=True) # this takes only a timestamp when it is saved for the first time and not everytime you save the same instance
 
-
+    class Meta:
+        ordering = ['-updated', '-created']
+        
     def __str__(self):
         return self.name
 
